@@ -1,0 +1,10 @@
+table, th, td {
+  border: 1px solid black;
+}
+div{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.form{
+  margin-left: 15px;
+}
