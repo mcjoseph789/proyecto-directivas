@@ -10,30 +10,43 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let articulo of articulos">
+    <tr *ngFor="let articulo of articulos;">
       <td>{{ articulo.codigo }}</td>
       <td>{{ articulo.descripcion }}</td>
       <td>{{ articulo.precio }}</td>
-      <td><button>Borrar</button></td>
-      <td><button>Seleccionar</button></td>
+      <td><button (click)="borrarArticulo(articulo.id)">Borrar</button></td>
+      <td><button (click)="selecArticulo(articulo.id)">Seleccionar</button></td>
     </tr>
   </tbody>
 </table>
 <form>
   <div>
     <label for="codigo">Código: </label>
-    <input type="number" name="codigo" id="codigo" [(ngModel)]="codigoInput">
+    <input type="number" name="codigo" id="codigo" [(ngModel)]="codigoInput" />
   </div>
   <div>
     <label for="codigo">Descripción: </label>
-    <input type="text" name="descripcion" id="descripcion" [(ngModel)]="descripcionInput">
+    <input
+      type="text"
+      name="descripcion"
+      id="descripcion"
+      [(ngModel)]="descripcionInput"
+    />
   </div>
+
   <div>
     <label for="codigo">Precio: </label>
-    <input type="number" name="precio" id="precio" [(ngModel)]="precioInput">
+    <input type="number" name="precio" id="precio" [(ngModel)]="precioInput" />
   </div>
 
-  <button type="submit" class="form" (click)="agregarArticulo()">Agregar</button>
-  <button class="form">Modificar</button>
+  <button type="submit" class="form" (click)="agregarArticulo()">
+    Agregar
+  </button>
+  <button
+    *ngIf="Selected_Article"
+    class="form"
+    (click)="modificarArticulo( Selected_Article.id)"
+  >
+    Modificar
+  </button>
 </form>
-
