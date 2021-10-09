@@ -1,0 +1,101 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-title>{{ title }}</mat-card-title>
+  <mat-card-subtitle>{{ articulos.length }} artículos</mat-card-subtitle>
+  <mat-card-content>
+    <div class="content-wrapper">
+      <table mat-table [dataSource]="[]" style="display: none">
+        <tr mat-header-row *matHeaderRowDef="[]"></tr>
+      </table>
+      <div class="table-wrapper">
+        <table class="mat-table cdk-table mat-elevation-z4">
+          <thead>
+            <tr class="mat-header-row cdk-header-row">
+              <th class="mat-header-cell cdk-header-cell">Código</th>
+              <th class="mat-header-cell cdk-header-cell">Descripción</th>
+              <th class="mat-header-cell cdk-header-cell">Precio</th>
+              <th class="mat-header-cell cdk-header-cell">Borrar</th>
+              <th class="mat-header-cell cdk-header-cell">Seleccionar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let articulo of articulos;" class="mat-row cdk-row">
+              <td class="mat-cell cdk-cell">{{ articulo.codigo }}</td>
+              <td class="mat-cell cdk-cell" style="width: 100%">
+                {{ articulo.descripcion }}
+              </td>
+              <td class="mat-cell cdk-cell">{{ articulo.precio }}</td>
+              <td class="mat-cell cdk-cell">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="selecArticulo(articulo.id)"
+                >
+                  Seleccionar
+                </button>
+              </td>
+              <td class="mat-cell cdk-cell">
+                <button
+                  mat-raised-button
+                  color="warn"
+                  (click)="borrarArticulo(articulo.id)"
+                >
+                  Borrar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <form class="products-form">
+        <mat-form-field appearance="fill">
+          <mat-label>Código</mat-label>
+          <input
+            type="number"
+            name="codigo"
+            matInput
+            [(ngModel)]="codigoInput"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <input
+            type="text"
+            name="descripcion"
+            matInput
+            [(ngModel)]="descripcionInput"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Precio</mat-label>
+          <input
+            type="number"
+            name="precio"
+            matInput
+            [(ngModel)]="precioInput"
+          />
+        </mat-form-field>
+        <div>
+          <button
+            mat-raised-button
+            type="submit"
+            (click)="agregarArticulo()"
+            color="primary"
+          >
+            Agregar
+          </button>
+          <button
+            *ngIf="Selected_Article"
+            mat-raised-button
+            (click)="modificarArticulo(Selected_Article.id)"
+            style="margin-left: 1em"
+          >
+            Modificar
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <app-footer></app-footer>
+  </mat-card-footer>
+</mat-card>

@@ -1,0 +1,40 @@
+mat-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-card-content {
+  flex-grow: 1;
+  position: relative;
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  bottom: 1em;
+  right: 1em;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.table-wrapper {
+  flex-grow: 3;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+th,
+td {
+  width: 1px;
+  padding-right: 4em !important;
+}
+
+.products-form {
+  flex-grow: 1;
+  margin-left: 2em;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,14 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <mat-action-list>
+      <button
+        mat-list-item
+        class="sidenav-button"
+        [ngClass]="{ 'sidenav-button-active': true }"
+      >
+        <mat-icon style="margin-right: 0.25em">inventory</mat-icon>
+        Artículos
+      </button>
+    </mat-action-list>
+  </mat-sidenav>
+</mat-sidenav-container>
